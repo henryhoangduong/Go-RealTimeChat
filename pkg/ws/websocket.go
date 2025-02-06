@@ -1,6 +1,11 @@
 package ws
 
-import "github.com/gorilla/websocket"
+import (
+	"net/http"
+	"realtimechat/model"
+
+	"github.com/gorilla/websocket"
+)
 
 type Client struct {
 }
@@ -10,7 +15,6 @@ type Message struct {
 
 var clients = make(map[*Client]bool)
 var broadcast = make(chan *model.Chat)
-
 
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
